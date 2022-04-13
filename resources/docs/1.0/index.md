@@ -1,5 +1,6 @@
 - ## Get Started
     - [Overview](/{{route}}/{{version}}/overview)
+    - [Registrasi](/{{route}}/{{version}}/registrasi)
     <!-- - [Integrasi](/{{route}}/{{version}}/Integrasi) -->
     - [Referensi API](/{{route}}/{{version}}/ReferensiAPI)
     - [Response Status](/{{route}}/{{version}}/responStatus)

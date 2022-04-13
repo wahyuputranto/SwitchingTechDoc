@@ -141,13 +141,14 @@ Callback bisa menggunakan HTTP Get atau HTTP Post dengan format XML atau JSON se
 Status yang dikirimkan akan berupa update status dari proses yang dilakukan saat ini. Dalam satu kali proses transaksi bisa terjadi beberapa kali callback sampai dengan final status dikirimkan. Yang termasuk dalam final
 status adalah status sukses (000) atau gagal (status yang tidak diawali 0 dan 1 di depannya). Callback untuk suatu transaksi yang diterima setelah status final bisa diabaikan.
 
-<a name="Status"></a>
 
 
 
 
 
 
+
+<a name="Inquiry-Prabayar"></a>
 ## Inquiry prabayar
 
 Transaksi PLN Prabayar, untuk beberapa kode produk perlu untuk dilakukan inquiry terlebih dahulu. Berikut ini contoh XML untuk inquiry dan responsenya.
@@ -421,6 +422,8 @@ Untuk melakukan pembayaran, partner terlebih dahulu harus melakukan inquiry sepe
 
 
 
+<a name="Status"></a>
+
 ## Cek Status Transaksi
 
 Untuk melakukan cek status transaksi yang sebelumnya sudah dikirimkan oleh partner ke system OKEBAYAR.
@@ -516,4 +519,4 @@ Echo dipergunakan untuk testing koneksi ke server OkeBayar. Apabila menggunakan 
 | <b>referencecode </b> | String    |                                                         |
 | <b>message </b>       | String    | Message yang akan di-echo oleh server OkeBayar.         |
 
-<a name="Inquiry-Prabayar"></a>
+
