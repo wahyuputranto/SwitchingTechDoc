@@ -3,7 +3,6 @@
 ---
 
 - [Informasi Umum](#section-1)
-- [Informasi Umum](#section-2)
 
 <a name="section-1"></a>
 ## Informasi Umum
@@ -35,57 +34,3 @@ Date dan Time format dalam API OkeBayar ini selalu menggunakan format YYMMDDHHmm
 
 Detail tentang status, silahkan lihat di lampiran 1 (Status Transaksi).
 
-Berikut adalah fungsi-fungsi utama dalam system OKEBAYAR.
-
-
-
-> {info} Here is an example of danger alarm message
-
-<!-- ![alt](https://i.ibb.co/9sJZqpX/android-kotlin-wallpaper.png) -->
-
-> {danger.fa-close} Here is an example of a font awesome icon
-
-
-- [Example](#example-link)
-
-<a name="example-link">
-## [Example](#example-link)
-
-### H3
-## H2
-Inline code is `cool`
-
-
-```json
-{
-"tracecode": "1234567890123456", 
-"transactionstatus": "000", 
-"transactiontime": "200501013059123", 
-"serialnumber": "11223344556677889900", 
-"harga": 11000.00,
-"balance": 510000123.00, 
-"productcode": "productCode", 
-"accnumber": "081234567890", "userid": "userId",
-"referencecode": "kodeReferensiPartner" 
-}
-
-```
-```xml
-{
-<transaction-status> <tracecode>1234567890123456</tracecode> <transactionstatus>000</transactionstatus> <transactiontime>YYMMddHHmmssSSS</transactiontime> <serialnumber>11223344556677889900</serialnumber> <harga>110000</harga>
-<balance>50590000</balance> <productcode>productCode</productcode> <accnumber>081234567890</accnumber> <userid>userId</userid> <referencecode>kodeReferensiPartner</referencecode>
-</transaction-status>
-
-}
-
-```
-
-
-
-
-<a name="section-2">
-## [Example2](#example-link)
-
-### H3--oiuoiu
-## H2
-Inline code is `cool`

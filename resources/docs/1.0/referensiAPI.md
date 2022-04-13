@@ -3,12 +3,12 @@
 ---
 
 -   [Pembelian produk top up prabayar](#Prabayar)
--   [Cek Status Transaksi](#Status)
--   [Balance](#Balance)
--   [Echo](#Echo)
 -   [Inquiry Prabayar](#Inquiry-Prabayar)
 -   [Inquiry PascaBayar](#Inquiry-PascaBayar)
 -   [Pembayaran-PascaBayar](#Pembayaran-PascaBayar)
+-   [Cek Status Transaksi](#Status)
+-   [Balance](#Balance)
+-   [Echo](#Echo)
 
 <a name="Prabayar"></a>
 
@@ -143,102 +143,10 @@ status adalah status sukses (000) atau gagal (status yang tidak diawali 0 dan 1 
 
 <a name="Status"></a>
 
-## Cek Status Transaksi
-
-Untuk melakukan cek status transaksi yang sebelumnya sudah dikirimkan oleh partner ke system OKEBAYAR.
-
-| Parameter                | Tipe Data | Deskripsi                                                                                                                                                                                        |
-| :----------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <b>tracecode</b>         | String    | TraceCode adalah kode unik yang digenerate oleh system OKEBAYAR untuk identifikasi suatu transaksi.                                                                                              |
-| <b>transactionstatus</b> | String    | Adalah status dari transaksi yang dikirimkan ke OkeBayar. “000” berarti transaksi sukses. Lihat lampiran status transaksi untuk detailnya.                                                       |
-| <b>transactiontime</b>   | String    | Tanggal dan jam transaksi dijalankan. Formatnya adalah YYMMDDHHmmssSSS.                                                                                                                          |
-| <b>serialnumber</b>      | String    | Serial number yang diberikan oleh biller. Bisa digunakan untuk check dan recheck transaksi ke biller langsung.                                                                                   |
-| <b>harga</b>             | String    | Harga yang akan dideduct oleh OkeBayar ke saldo prepaid PARTNER untuk transaksi tersebut.                                                                                                        |
-| <b>balance </b>          | String    | Saldo deposit/wallet PARTNER yang tersisa.                                                                                                                                                       |
-| <b>productcode </b>      | String    | Kode produk prabayar yang dibeli.                                                                                                                                                                |
-| <b>accnumber </b>        | String    | Account number pelanggan. Untuk prepaid pulsa, accnumber diisi dengan nomor handphone prepaid pelanggan.                                                                                         |
-| <b>userid </b>           | String    | UserId yang digunakan oleh PARTNER untuk melakukan transaksi ini                                                                                                                                 |
-| <b>info </b>             | String    | Additional info yang digenerate oleh OkeBayar untuk menjadi perhatian PARTNER. Kadang kala bisa berupa iklan. Sebaiknya PARTNER menampung message ini dalam suatu database inbox untuk direview. |
-| <b>referencecode </b>    | String    | Kode referensi yang digenerate oleh PARTNER, dikirimkan kembali kepada PARTNER untuk kepentingan trace transaksi                                                                                 |
-
-Untuk melakukan cek status transaksi yang sebelumnya sudah dikirimkan oleh partner ke system OKEBAYAR.
-
-| Parameter                | Tipe Data | Deskripsi                                                                                                                                                                                        |
-| :----------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <b>tracecode</b>         | String    | TraceCode adalah kode unik yang digenerate oleh system OKEBAYAR untuk identifikasi suatu transaksi.                                                                                              |
-| <b>transactionstatus</b> | String    | Adalah status dari transaksi yang dikirimkan ke OkeBayar. “000” berarti transaksi sukses. Lihat lampiran status transaksi untuk detailnya.                                                       |
-| <b>transactiontime</b>   | String    | Tanggal dan jam transaksi dijalankan. Formatnya adalah YYMMDDHHmmssSSS.                                                                                                                          |
-| <b>serialnumber</b>      | String    | Serial number yang diberikan oleh biller. Bisa digunakan untuk check dan recheck transaksi ke biller langsung.                                                                                   |
-| <b>harga</b>             | String    | Harga yang akan dideduct oleh OkeBayar ke saldo prepaid PARTNER untuk transaksi tersebut.                                                                                                        |
-| <b>balance </b>          | String    | Saldo deposit/wallet PARTNER yang tersisa.                                                                                                                                                       |
-| <b>productcode </b>      | String    | Kode produk prabayar yang dibeli.                                                                                                                                                                |
-| <b>accnumber </b>        | String    | Account number pelanggan. Untuk prepaid pulsa, accnumber diisi dengan nomor handphone prepaid pelanggan.                                                                                         |
-| <b>userid </b>           | String    | UserId yang digunakan oleh PARTNER untuk melakukan transaksi ini                                                                                                                                 |
-| <b>info </b>             | String    | Additional info yang digenerate oleh OkeBayar untuk menjadi perhatian PARTNER. Kadang kala bisa berupa iklan. Sebaiknya PARTNER menampung message ini dalam suatu database inbox untuk direview. |
-| <b>referencecode </b>    | String    | Kode referensi yang digenerate oleh PARTNER, dikirimkan kembali kepada PARTNER untuk kepentingan trace transaksi                                                                                 |
 
 
-<a name="Balance"></a>
 
-## Balance
 
-Untuk melihat sisa deposit saat ini, parameter yang digunakan adalah:
-
-<b>
-    Request 
-</b>
-
-| Parameter              | Tipe Data | Deskripsi                                                                                           |
-| :--------------------- | :-------- | :-------------------------------------------------------------------------------------------------- |
-| <b>transactioncode</b> | String    | Diisi dengan pre-defined parameter untuk cek balance: “OkeBayar-cek-balance” (tanpa double quotes). |
-| <b>tracecode</b>       | String    | TraceCode dari transaksi sebelumnya yang akan dicek statusnya.                                      |
-| <b>userid</b>          | String    | UserId yang terdaftar di system OKEBAYAR untuk PARTNER.                                             |
-| <b>userpin </b>        | String    | PIN yang sesuai dengan userId.                                                                      |
-| <b>signature</b>       | String    | Kode yang digenerate menggunakan MD5. Signature = MD5(userid+userpin+referencecode).                |
-| <b>referencecode </b>  | String    | Kode unik yang dipakai oleh PARTNER untuk identifikasi transaksi ke system OKEBAYAR.                |
-
-<b>
-    Response 
-</b>
-
-| Parameter              | Tipe Data | Deskripsi                                                                                                 |
-| :--------------------- | :-------- | :-------------------------------------------------------------------------------------------------------- |
-| <b>tracecode</b>       | String    | TraceCode adalah kode unik yang digenerate oleh system OKEBAYAR untuk identifikasi suatu transaksi.       |
-| <b>responsecode </b>   | String    | Lihat lampiran response status.                                                                           |
-| <b>referencecode</b>   | String    | Kode unik dari PARTNER yang ditampilkan kembali untuk digunakan oleh PARTNER sebagai referensi transaksi. |
-| <b>responsestatus </b> | String    | Deskripsi tentang responsecode.                                                                           |
-| <b>responsetime </b>   | String    | Tanggal dan Jam transaksi dilakukan.                                                                      |
-| <b>balance </b>        | String    | Sisa saldo dalam mata uang rupiah.                                                                        |
-
-<a name="Echo"></a>
-
-## Echo
-
-Echo dipergunakan untuk testing koneksi ke server OkeBayar. Apabila menggunakan protocol koneksi ISO 8583, echo digunakan untuk memastikan apakah koneksi soket ke server OkeBayar masih tersambung dan berjalan dengan baik.
-
-<b>
-    Request 
-</b>
-
-| Parameter             | Tipe Data | Deskripsi                                                                            |
-| :-------------------- | :-------- | :----------------------------------------------------------------------------------- |
-| <b>userid</b>         | String    | UserId yang terdaftar di system OKEBAYAR untuk PARTNER.                              |
-| <b>userpin </b>       | String    | PIN yang sesuai dengan userId.                                                       |
-| <b>signature</b>      | String    | Kode yang digenerate menggunakan MD5. Signature = MD5(userid+userpin+referencecode). |
-| <b>referencecode </b> | String    |                                                                                      |
-| <b>message </b>       | String    | Message yang akan di-echo oleh server OkeBayar.                                      |
-
-<b>
-    Response 
-</b>
-
-| Parameter             | Tipe Data | Deskripsi                                               |
-| :-------------------- | :-------- | :------------------------------------------------------ |
-| <b>userid</b>         | String    | UserId yang terdaftar di system OKEBAYAR untuk PARTNER. |
-| <b>referencecode </b> | String    |                                                         |
-| <b>message </b>       | String    | Message yang akan di-echo oleh server OkeBayar.         |
-
-<a name="Inquiry-Prabayar"></a>
 
 ## Inquiry prabayar
 
@@ -451,7 +359,7 @@ Di dalam data inquiry response, terdapat data “Inquiry Code” atau inquirycod
 | <b>totalrptag</b>              |                                                                             |
 | <b>info</b>                    |                                                                             |
 
-Lebih lengkap tentang additional data, bisa dilihat di lampiran additional data.
+
 
 <a name="Pembayaran-PascaBayar"></a>
 
@@ -512,3 +420,100 @@ Untuk melakukan pembayaran, partner terlebih dahulu harus melakukan inquiry sepe
 | <b>additionaldata </b> | String    | Additional data in XML format. Additional data can be different from one product to another. PARTNER can use it to gather detai information about the billing and payment.      |
 
 
+
+## Cek Status Transaksi
+
+Untuk melakukan cek status transaksi yang sebelumnya sudah dikirimkan oleh partner ke system OKEBAYAR.
+
+| Parameter                | Tipe Data | Deskripsi                                                                                                                                                                                        |
+| :----------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <b>tracecode</b>         | String    | TraceCode adalah kode unik yang digenerate oleh system OKEBAYAR untuk identifikasi suatu transaksi.                                                                                              |
+| <b>transactionstatus</b> | String    | Adalah status dari transaksi yang dikirimkan ke OkeBayar. “000” berarti transaksi sukses. Lihat lampiran status transaksi untuk detailnya.                                                       |
+| <b>transactiontime</b>   | String    | Tanggal dan jam transaksi dijalankan. Formatnya adalah YYMMDDHHmmssSSS.                                                                                                                          |
+| <b>serialnumber</b>      | String    | Serial number yang diberikan oleh biller. Bisa digunakan untuk check dan recheck transaksi ke biller langsung.                                                                                   |
+| <b>harga</b>             | String    | Harga yang akan dideduct oleh OkeBayar ke saldo prepaid PARTNER untuk transaksi tersebut.                                                                                                        |
+| <b>balance </b>          | String    | Saldo deposit/wallet PARTNER yang tersisa.                                                                                                                                                       |
+| <b>productcode </b>      | String    | Kode produk prabayar yang dibeli.                                                                                                                                                                |
+| <b>accnumber </b>        | String    | Account number pelanggan. Untuk prepaid pulsa, accnumber diisi dengan nomor handphone prepaid pelanggan.                                                                                         |
+| <b>userid </b>           | String    | UserId yang digunakan oleh PARTNER untuk melakukan transaksi ini                                                                                                                                 |
+| <b>info </b>             | String    | Additional info yang digenerate oleh OkeBayar untuk menjadi perhatian PARTNER. Kadang kala bisa berupa iklan. Sebaiknya PARTNER menampung message ini dalam suatu database inbox untuk direview. |
+| <b>referencecode </b>    | String    | Kode referensi yang digenerate oleh PARTNER, dikirimkan kembali kepada PARTNER untuk kepentingan trace transaksi                                                                                 |
+
+Untuk melakukan cek status transaksi yang sebelumnya sudah dikirimkan oleh partner ke system OKEBAYAR.
+
+| Parameter                | Tipe Data | Deskripsi                                                                                                                                                                                        |
+| :----------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <b>tracecode</b>         | String    | TraceCode adalah kode unik yang digenerate oleh system OKEBAYAR untuk identifikasi suatu transaksi.                                                                                              |
+| <b>transactionstatus</b> | String    | Adalah status dari transaksi yang dikirimkan ke OkeBayar. “000” berarti transaksi sukses. Lihat lampiran status transaksi untuk detailnya.                                                       |
+| <b>transactiontime</b>   | String    | Tanggal dan jam transaksi dijalankan. Formatnya adalah YYMMDDHHmmssSSS.                                                                                                                          |
+| <b>serialnumber</b>      | String    | Serial number yang diberikan oleh biller. Bisa digunakan untuk check dan recheck transaksi ke biller langsung.                                                                                   |
+| <b>harga</b>             | String    | Harga yang akan dideduct oleh OkeBayar ke saldo prepaid PARTNER untuk transaksi tersebut.                                                                                                        |
+| <b>balance </b>          | String    | Saldo deposit/wallet PARTNER yang tersisa.                                                                                                                                                       |
+| <b>productcode </b>      | String    | Kode produk prabayar yang dibeli.                                                                                                                                                                |
+| <b>accnumber </b>        | String    | Account number pelanggan. Untuk prepaid pulsa, accnumber diisi dengan nomor handphone prepaid pelanggan.                                                                                         |
+| <b>userid </b>           | String    | UserId yang digunakan oleh PARTNER untuk melakukan transaksi ini                                                                                                                                 |
+| <b>info </b>             | String    | Additional info yang digenerate oleh OkeBayar untuk menjadi perhatian PARTNER. Kadang kala bisa berupa iklan. Sebaiknya PARTNER menampung message ini dalam suatu database inbox untuk direview. |
+| <b>referencecode </b>    | String    | Kode referensi yang digenerate oleh PARTNER, dikirimkan kembali kepada PARTNER untuk kepentingan trace transaksi                                                                                 |
+
+
+<a name="Balance"></a>
+
+## Balance
+
+Untuk melihat sisa deposit saat ini, parameter yang digunakan adalah:
+
+<b>
+    Request 
+</b>
+
+| Parameter              | Tipe Data | Deskripsi                                                                                           |
+| :--------------------- | :-------- | :-------------------------------------------------------------------------------------------------- |
+| <b>transactioncode</b> | String    | Diisi dengan pre-defined parameter untuk cek balance: “OkeBayar-cek-balance” (tanpa double quotes). |
+| <b>tracecode</b>       | String    | TraceCode dari transaksi sebelumnya yang akan dicek statusnya.                                      |
+| <b>userid</b>          | String    | UserId yang terdaftar di system OKEBAYAR untuk PARTNER.                                             |
+| <b>userpin </b>        | String    | PIN yang sesuai dengan userId.                                                                      |
+| <b>signature</b>       | String    | Kode yang digenerate menggunakan MD5. Signature = MD5(userid+userpin+referencecode).                |
+| <b>referencecode </b>  | String    | Kode unik yang dipakai oleh PARTNER untuk identifikasi transaksi ke system OKEBAYAR.                |
+
+<b>
+    Response 
+</b>
+
+| Parameter              | Tipe Data | Deskripsi                                                                                                 |
+| :--------------------- | :-------- | :-------------------------------------------------------------------------------------------------------- |
+| <b>tracecode</b>       | String    | TraceCode adalah kode unik yang digenerate oleh system OKEBAYAR untuk identifikasi suatu transaksi.       |
+| <b>responsecode </b>   | String    | Lihat lampiran response status.                                                                           |
+| <b>referencecode</b>   | String    | Kode unik dari PARTNER yang ditampilkan kembali untuk digunakan oleh PARTNER sebagai referensi transaksi. |
+| <b>responsestatus </b> | String    | Deskripsi tentang responsecode.                                                                           |
+| <b>responsetime </b>   | String    | Tanggal dan Jam transaksi dilakukan.                                                                      |
+| <b>balance </b>        | String    | Sisa saldo dalam mata uang rupiah.                                                                        |
+
+<a name="Echo"></a>
+
+## Echo
+
+Echo dipergunakan untuk testing koneksi ke server OkeBayar. Apabila menggunakan protocol koneksi ISO 8583, echo digunakan untuk memastikan apakah koneksi soket ke server OkeBayar masih tersambung dan berjalan dengan baik.
+
+<b>
+    Request 
+</b>
+
+| Parameter             | Tipe Data | Deskripsi                                                                            |
+| :-------------------- | :-------- | :----------------------------------------------------------------------------------- |
+| <b>userid</b>         | String    | UserId yang terdaftar di system OKEBAYAR untuk PARTNER.                              |
+| <b>userpin </b>       | String    | PIN yang sesuai dengan userId.                                                       |
+| <b>signature</b>      | String    | Kode yang digenerate menggunakan MD5. Signature = MD5(userid+userpin+referencecode). |
+| <b>referencecode </b> | String    |                                                                                      |
+| <b>message </b>       | String    | Message yang akan di-echo oleh server OkeBayar.                                      |
+
+<b>
+    Response 
+</b>
+
+| Parameter             | Tipe Data | Deskripsi                                               |
+| :-------------------- | :-------- | :------------------------------------------------------ |
+| <b>userid</b>         | String    | UserId yang terdaftar di system OKEBAYAR untuk PARTNER. |
+| <b>referencecode </b> | String    |                                                         |
+| <b>message </b>       | String    | Message yang akan di-echo oleh server OkeBayar.         |
+
+<a name="Inquiry-Prabayar"></a>
