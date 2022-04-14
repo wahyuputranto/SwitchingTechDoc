@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => 'cc0fa1772d48b8b97b703a28251c93da9af07b94',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -401,12 +401,12 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => 'cc0fa1772d48b8b97b703a28251c93da9af07b94',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -464,12 +464,12 @@
             'dev_requirement' => false,
         ),
         'league/flysystem' => array(
-            'pretty_version' => '3.0.16',
-            'version' => '3.0.16.0',
+            'pretty_version' => '3.0.17',
+            'version' => '3.0.17.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/flysystem',
             'aliases' => array(),
-            'reference' => 'dea729954c596bdb6cdaecba6f73df9f3e2c4255',
+            'reference' => '29eb78cac0be0c22237c5e0f6f98234d97037d79',
             'dev_requirement' => false,
         ),
         'league/mime-type-detection' => array(
@@ -996,12 +996,12 @@
             'dev_requirement' => true,
         ),
         'spatie/laravel-ignition' => array(
-            'pretty_version' => '1.2.0',
-            'version' => '1.2.0.0',
+            'pretty_version' => '1.2.1',
+            'version' => '1.2.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../spatie/laravel-ignition',
             'aliases' => array(),
-            'reference' => '2b54c8c66f2d280f25e15064ebe3d5e3eda19820',
+            'reference' => '9ad1d32acf8c855d711964bc19092b0bc9792273',
             'dev_requirement' => true,
         ),
         'symfony/console' => array(

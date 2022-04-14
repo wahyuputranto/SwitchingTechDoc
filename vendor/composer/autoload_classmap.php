@@ -4379,7 +4379,6 @@ return array(
     'Symfony\\Component\\Finder\\Exception\\AccessDeniedException' => $vendorDir . '/symfony/finder/Exception/AccessDeniedException.php',
     'Symfony\\Component\\Finder\\Exception\\DirectoryNotFoundException' => $vendorDir . '/symfony/finder/Exception/DirectoryNotFoundException.php',
     'Symfony\\Component\\Finder\\Finder' => $vendorDir . '/symfony/finder/Finder.php',
-    'Symfony\\Component\\Finder\\Gitignore' => $vendorDir . '/symfony/finder/Gitignore.php',
     'Symfony\\Component\\Finder\\Glob' => $vendorDir . '/symfony/finder/Glob.php',
     'Symfony\\Component\\Finder\\Iterator\\CustomFilterIterator' => $vendorDir . '/symfony/finder/Iterator/CustomFilterIterator.php',
     'Symfony\\Component\\Finder\\Iterator\\DateRangeFilterIterator' => $vendorDir . '/symfony/finder/Iterator/DateRangeFilterIterator.php',
